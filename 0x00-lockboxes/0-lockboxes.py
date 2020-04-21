@@ -12,7 +12,7 @@ def canUnlockAll(boxes):
             else:
                 all_boxes.append(boxes[i])
     set_of_keys = set([keys for box in all_boxes
-                       for keys in box if keys < len(boxes)])
+                       for keys in box])
     if len(set_of_keys) == len(boxes):
         return True
     else:
