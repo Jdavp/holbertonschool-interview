@@ -11,8 +11,9 @@ def canUnlockAll(boxes):
                 all_boxes.append([0])
             else:
                 all_boxes.append(boxes[i])
-    set_of_boxes = set([item for box in all_boxes for item in box])
-    if len(set_of_boxes) == len(boxes):
+    set_of_keys = set([keys for box in all_boxes
+                       for keys in box if keys < len(boxes)])
+    if len(set_of_keys) == len(boxes):
         return True
     else:
         return False
