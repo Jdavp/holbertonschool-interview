@@ -8,9 +8,9 @@ def canUnlockAll(boxes):
     for box in range(len(boxes)):
         if len(boxes[box]) == 0:
             all_keys.append(0)
-        for keys in boxes[box]:
-            if keys != box and keys <= len(boxes):
-                all_keys.append(keys)
+        for keys in range(len(boxes[box])):
+            if boxes[box][keys] != box and boxes[box][keys] <= len(boxes):
+                all_keys.append(boxes[box][keys])
     set_of_keys = set(all_keys)
     if len(set_of_keys) == len(boxes):
         return True
