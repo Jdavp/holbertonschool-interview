@@ -13,9 +13,9 @@ void sandpiles_sum(int grid1[3][3], int grid2[3][3])
 {
 	int a = 0;
 
-	for (int x = 0; x <= 3; x++)
+	for (int x = 0; x < 3; x++)
 	{
-		for (int y = 0; y <= 3; y++)
+		for (int y = 0; y < 3; y++)
 		{
 			grid1[x][y] += grid2[x][y];
 			if (grid1[x][y] <= 4)
@@ -26,9 +26,9 @@ void sandpiles_sum(int grid1[3][3], int grid2[3][3])
 	}
 		if (a == 1)
 		{
-			recursion(grid1);
+			printf("=\n");
 			print_grid(grid1);
-
+			recursion(grid1);
 		}
 }
 
@@ -40,25 +40,34 @@ void sandpiles_sum(int grid1[3][3], int grid2[3][3])
 
 void recursion(int grid[3][3])
 {
-	for (int x = 0; x <= 3; x++)
+	int a = 0;
+
+	for (int x = 0; x < 3; x++)
 	{
-		for (int y = 0; y <= 3; y++)
+		for (int y = 0; y < 3; y++)
 		{
 			int num = grid[x][y];
 
-			if (num >= 4)
+			if (num > 3)
 			{
+				a = 1;
 				grid[x][y] -= 4;
-				if (x + 1 <= 3)
+				if (x + 1 < 3)
 					grid[x + 1][y]++;
 				if (x - 1 >= 0)
 					grid[x - 1][y]++;
-				if (y + 1 <= 3)
+				if (y + 1 < 3)
 					grid[x][y + 1]++;
 				if (y - 1 >= 0)
 					grid[x][y - 1]++;
 			}
 		}
+	}
+	if (a == 1)
+	{
+		printf("=\n");
+		print_grid(grid);
+		recursion(grid);
 	}
 }
 
