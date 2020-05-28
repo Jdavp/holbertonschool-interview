@@ -60,7 +60,10 @@ int is_palindrome(listint_t **head)
 	listint_t *prev = NULL;
 	int ret = 0;
 
-	if (head == NULL || *head == NULL)
+	if (head == NULL)
+		return (0);
+
+	if (*head == NULL)
 		return (1);
 
 	while (f_ptr && f_ptr->next && f_ptr->next->next)
