@@ -1,6 +1,6 @@
 #ifndef LISTS_H
 #define LISTS_H
-
+#include <stdbool.h>
 /**
  * struct listint_s - singly linked list
  * @n: integer
@@ -18,8 +18,7 @@ struct listint_s *next;
 size_t print_listint(const listint_t *h);
 listint_t *add_nodeint_end(listint_t **head, const int n);
 void free_listint(listint_t *head);
-listint_t *reverse_list(listint_t **head);
-int are_identical(listint_t *headA, listint_t *headB);
+bool isPalindromeUtil(listint_t **left, listint_t  *right);
 int is_palindrome(listint_t **head);
 
 #endif /* LISTS_H */

@@ -3,47 +3,27 @@
 #include "lists.h"
 #include <stdbool.h>
 
-
 /**
- * reverse_list - turn list backwards
- *@head: pointer to the list
- * Return: list reverse
- */
-
-listint_t *reverse_list(listint_t **head)
-{
-	listint_t *prev = NULL;
-	listint_t *curr = *head;
-	listint_t *next;
-
-	while (curr)
-	{
-		next = curr->next;
-		curr->next = prev;
-		prev = curr;
-		curr = next;
-	}
-
-	return (prev);
-}
-
-/**
- * are_identical - checks if a singly linked list is a palindrome
- *@headA: pointer to list
- *@headB: pointer to list backwards
+ * isPalindromeUtil - checks if a singly linked list is a palindrome
+ *@left: double pointer to list
+ *@right: pointer to list
  * Return: Always 0 (Success)
  */
 
-int are_identical(listint_t *headA, listint_t *headB)
+bool isPalindromeUtil(listint_t **left, listint_t  *right)
 {
-	if (headA == NULL && headB == NULL)
+	if (right == NULL)
 		return (1);
-	else if (headA != NULL && headB != NULL)
-		return (headA->n == headB->n && are_identical(headA->next, headB->next));
-	else
-		return (0);
-}
 
+	bool isp = isPalindromeUtil(left, right->next);
+
+	if (isp == 0)
+		return (0);
+
+	bool isp1 = (right->n == (*left)->n);
+	*left = (*left)->next;
+	return (isp1);
+}
 
 /**
  * is_palindrome - checks if a singly linked list is a palindrome
@@ -53,41 +33,11 @@ int are_identical(listint_t *headA, listint_t *headB)
 
 int is_palindrome(listint_t **head)
 {
-	listint_t *first;
-	listint_t *second;
-	listint_t *f_ptr = *head;
-	listint_t *s_ptr = *head;
-	listint_t *prev = NULL;
-	int ret = 0;
-
 	if (head == NULL)
 		return (0);
 
 	if (*head == NULL)
 		return (1);
 
-	while (f_ptr && f_ptr->next && f_ptr->next->next)
-	{
-		prev = s_ptr;
-		s_ptr = s_ptr->next;
-		f_ptr = f_ptr->next->next;
-	}
-	if (!(f_ptr->next->next))
-	{
-		first = *head;
-		second = s_ptr->next;
-		s_ptr->next = NULL;
-		second = reverse_list(&second);
-		ret = are_identical(first, second);
-	}
-	if (!(f_ptr->next))
-	{
-		first = *head;
-		second = s_ptr->next;
-		prev->next = NULL;
-		s_ptr->next = NULL;
-		second = reverse_list(&second);
-		ret = are_identical(first, second);
-	}
-	return (ret);
+	return (isPalindromeUtil(head, *head));
 }
