@@ -10,14 +10,13 @@ try:
     for index, line in enumerate(sys.stdin, 1):
         if line:
             line_split = line.split()
-            if len(line_split) > 1:
+            if len(line_split) > 2:
                 if line_split[-1].isnumeric() and line_split[-2].isnumeric():
                     size = line_split[-1]
                     status = line_split[-2]
+                    total_size += int(size)
             if len(status) > 0 and int(status) in status_list:
                 final_list.append(int(status))
-            total_size += int(size)
-            size = 0
         if index % 10 == 0:
             print('File size: {}'.format(str(total_size)))
             for i in status_list:
