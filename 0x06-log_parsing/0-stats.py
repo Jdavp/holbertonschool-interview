@@ -23,7 +23,7 @@ try:
             for i in status_list:
                 if i in final_list:
                     status_count = final_list.count(i)
-                    print(str(i)+": "+str(status_count))
+                    print("{}: {}".format(str(i), str(status_count)))
 except Exception:
     pass
 
