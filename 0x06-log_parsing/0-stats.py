@@ -4,7 +4,6 @@ import sys
 
 status_list = [200, 301, 400, 401, 403, 404, 405, 500]
 try:
-    total_status = 0
     total_size = 0
     final_list = []
     for index, line in enumerate(sys.stdin, 1):
@@ -22,7 +21,7 @@ try:
             for i in status_list:
                 if i in final_list:
                     status_count = final_list.count(i)
-                    print("{}: {}".format(str(i), str(status_count)))
+                    print("{}: {}".format(i, status_count))
 except Exception:
     pass
 
@@ -31,4 +30,4 @@ finally:
     for i in status_list:
         if i in final_list:
             status_count = final_list.count(i)
-            print("{}: {}".format(str(i), str(status_count)))
+            print("{}: {}".format(i, status_count))
