@@ -19,7 +19,7 @@ try:
             total_size += int(size)
             size = 0
         if index % 10 == 0:
-            print('File size: '+str(total_size))
+            print('File size: {}'.format(str(total_size)))
             for i in status_list:
                 if i in final_list:
                     status_count = final_list.count(i)
@@ -28,6 +28,6 @@ try:
     for i in status_list:
         if i in final_list:
             status_count = final_list.count(i)
-            print(str(i)+": "+str(status_count))
+            print("{}: {}".format(str(i), str(status_count)))
 except Exception:
     print(Exception)
