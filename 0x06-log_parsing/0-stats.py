@@ -28,7 +28,7 @@ except Exception:
     pass
 
 finally:
-    print('File size: '+str(total_size))
+    print('File size: {}'.format(str(total_size)))
     for i in status_list:
         if i in final_list:
             status_count = final_list.count(i)
