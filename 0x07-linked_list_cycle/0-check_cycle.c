@@ -13,11 +13,11 @@ int check_cycle(listint_t *list)
 	listint_t *tortoise;
 	listint_t *hear;
 
-	tortoise = list;
-	hear = list->next;
-
 	if (list == NULL)
 		return (0);
+
+	tortoise = list;
+	hear = list->next;
 
 	while (hear != NULL && hear->next != NULL)
 	{
