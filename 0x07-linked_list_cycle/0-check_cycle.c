@@ -15,9 +15,9 @@ int check_cycle(listint_t *list)
 
 	tortoise = list;
 	hear = list->next;
-	while (hear->next != NULL)
+	while (tortoise->next != NULL && hear->next != NULL)
 	{
-		if (hear == tortoise)
+		if (hear->n == tortoise->n)
 		{
 			return (1);
 		}
