@@ -2,10 +2,10 @@
 'UTF-8 Validation'
 import itertools as it
 
+
 def to_bits(bytes):
     'Changing a number to a list of bits'
     NUMBER_OF_BITS_PER_BLOCK = 8
-    
     for byte in bytes:
         num = []
         exp = 1 << NUMBER_OF_BITS_PER_BLOCK
@@ -14,15 +14,15 @@ def to_bits(bytes):
             num.append(bool(byte & exp))
         yield num
 
+
 def validUTF8(data):
     'determines if a given data set represents a valid UTF-8 encoding'
     """
     :type data: List[int]
     :rtype: bool
     """
-
     MAX_NUMBER_OF_ONES = 4
-    
+
     bits = to_bits(data)
     for byte in bits:
         # single byte char
