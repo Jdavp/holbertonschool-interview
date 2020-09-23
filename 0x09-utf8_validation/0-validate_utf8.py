@@ -21,6 +21,9 @@ def validUTF8(data):
     :type data: List[int]
     :rtype: bool
     """
+    if len(data) == 0:
+        return False
+
     MAX_NUMBER_OF_ONES = 4
 
     bits = to_bits(data)
