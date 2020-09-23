@@ -21,7 +21,7 @@ def validUTF8(data):
     :type data: List[int]
     :rtype: bool
     """
-    if len(data) == 0:
+    if len(data) == 0 or type(data) != list:
         return False
 
     MAX_NUMBER_OF_ONES = 4
