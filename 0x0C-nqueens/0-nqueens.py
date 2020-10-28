@@ -1,10 +1,6 @@
 #!/usr/bin/python3
 
-"""program that solves the N queens problem
-Usage: nqueens N
-where N must be an integer greater or equal to 4
-|The program should print everrow possible solution to the problem
-"""
+'N queens problem-N must be an integer greater or equal to 4'
 
 import sys
 
@@ -12,19 +8,19 @@ import sys
 def queens_potitions(Nq, row, queens):
 
     for column in range(Nq):
-        flag = 0
+        clash = 0
 
         for queen in queens:
 
             if abs(column - queen[1]) == abs(row - queen[0]):
-                flag = 1
+                clash = 1
                 break
 
             if column == queen[1]:
-                flag = 1
+                clash = 1
                 break
 
-        if flag == 0:
+        if clash == 0:
             queens.append([row, column])
 
             if row != Nq - 1:
@@ -37,7 +33,7 @@ def queens_potitions(Nq, row, queens):
 
 
 if __name__ == "__main__":
-    """receive console arguments and call function"""
+    'receive console arguments and call function'
 
     if len(sys.argv) != 2:
         print("Usage: nqueens N")
